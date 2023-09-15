@@ -3,12 +3,91 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="facade.GameOverPage"
              Title="GameOverPage">
-    <VerticalStackLayout>
-        <Label
+    <!--<VerticalStackLayout>
+        <Label 
             x:Name="ResultLabel"
-            Text="{Binding Result}"
-            FontSize="Title"
+            Text="You Won!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    </VerticalStackLayout-->
+
+    <ScrollView>
+        <Grid Padding="0" RowSpacing="16" BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+
+            </Grid.RowDefinitions>
+
+            <StackLayout HorizontalOptions="Fill" Padding="8" Grid.Row="0" Orientation="Horizontal"  >
+
+                <Ellipse Fill="#FACADE"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         HeightRequest="260"
+                         WidthRequest="380"/>
+
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="2">
+                <Label Text="#"
+                       TextColor="#facade"
+                       FontSize="36"
+                       VerticalOptions="Center"/>
+
+                <Label Text="FACADE"
+                       TextColor="#facade"
+                       FontSize="38"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Padding="8">
+                <Label Text="{Binding Result}"
+                       x:Name="ResultLabel"
+                       TextColor="Blue"
+                       FontAttributes="Bold"
+                       FontSize="40" 
+                       VerticalOptions="Center"/>
+
+            </StackLayout>
+
+            <Grid Padding="12" Grid.Row="3" RowSpacing="12" ColumnSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Replay"
+                        WidthRequest="100"
+                        HeightRequest="100"
+                        BackgroundColor="#666"
+                        TextColor="White"
+                        FontSize="22"/>
+                <!--Clicked="Button_Clicked"-->
+
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Text="New"
+                        WidthRequest="100"
+                        HeightRequest="100"
+                        BackgroundColor="#666"
+                        TextColor="White"
+                        FontSize="24"
+                />
+
+            </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>

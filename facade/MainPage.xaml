@@ -6,9 +6,10 @@
              >
 
     <ScrollView>
-        <Grid Padding="0" RowSpacing="16">
+        <Grid Padding="0" RowSpacing="16" BackgroundColor="Black">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
 
@@ -16,17 +17,56 @@
 
 
             <!--<RoundRectangle Grid.Row="0" Fill="#facade" CornerRadius="48" MaximumHeightRequest="150"/>-->
-            <StackLayout HorizontalOptions="Fill" BackgroundColor="#facade" Padding="8" Grid.Row="0" Orientation="Horizontal"  >
+            <StackLayout HorizontalOptions="Fill" Padding="8" Grid.Row="0" Orientation="Horizontal"  >
 
-                <Label Text="#" FontSize="60" VerticalOptions="Center" />
-                <Label Text="FACADE"
-                       FontSize="60"
-                       VerticalOptions="Center"
-                       />
+                <Ellipse Fill="#FACADE"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         HeightRequest="260"
+                         WidthRequest="380"
+                />
+
 
             </StackLayout>
 
-            <Grid Padding="12" Grid.Row="1" RowSpacing="12" ColumnSpacing="12">
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="6">
+                <Label Text="#"
+                       TextColor="White"
+                       FontSize="36"
+                       VerticalOptions="Center"
+                       />
+
+                <Label Text="FACADE"
+                       TextColor="White"
+                       FontSize="38"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+
+            </StackLayout>
+
+            <!--<Grid Grid.Row="1" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="#"
+                       TextColor="White"
+                       FontSize="30"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"/>
+
+                <Label Text="FACADE"
+                       TextColor="White"
+                       FontSize="30"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </Grid>-->
+
+            <Grid Padding="12" Grid.Row="2" RowSpacing="12" ColumnSpacing="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -60,31 +100,31 @@
                 <Button Grid.Row="1"
                     Grid.Column="0"
                     Text=""
-                    BackgroundColor="Transparent"
-                    BorderColor="#111"
+                    BackgroundColor="White"
+                    BorderColor="#FFF"
                     BorderWidth="1"
                     FontSize="16"
                     IsEnabled="false "/>
                 <Button Grid.Row="1"
                     Grid.Column="1"
                     Text=""
-                    BackgroundColor="Transparent"
-                    BorderColor="#111"
+                    BackgroundColor="White"
+                    BorderColor="#FFF"
                     BorderWidth="1"
                     FontSize="16"
                     IsEnabled="false "/>
                 <Button Grid.Row="1"
                     Grid.Column="2"
                     Text=""
-                    BackgroundColor="Transparent"
-                    BorderColor="#111"
+                    BackgroundColor="White"
+                    BorderColor="#fff"
                     BorderWidth="1"
                     FontSize="16"
                     IsEnabled="false "/>
 
             </Grid>
 
-            <Grid Padding="12" Grid.Row="2" RowSpacing="12" ColumnSpacing="12">
+            <Grid Padding="12" Grid.Row="3" RowSpacing="12" ColumnSpacing="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -162,8 +202,8 @@
                     Text="↑"
                     WidthRequest="60"
                     HeightRequest="60"
-                        CornerRadius="30"
-                    BackgroundColor="#666"
+                    CornerRadius="30"
+                    BackgroundColor="Green"
                     TextColor="White"
                     Clicked="Button_Clicked"
                     FontSize="32"
@@ -172,15 +212,17 @@
                         <Shadow Brush="Gray"
                                 Offset="0,0"
                                 Radius="5"
-                                Opacity="0.5" />
+
+                                Opacity="0.5"/>
                     </Button.Shadow>
                 </Button>
+
                 <Button Grid.Row="1"
                     Grid.Column="3"
                     Text="⌫"
                     WidthRequest="60"
                     HeightRequest="60"
-                    BackgroundColor="Transparent"
+                    BackgroundColor="Red"
                     TextColor="#333"
                     BorderWidth="0"
                     FontSize="36"
