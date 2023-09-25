@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="facade.MainPage"
              Title="#facade"
+             xmlns:local="clr-namespace:facade"
+             x:DataType="local:MainPageViewModel"
              >
 
     <ScrollView>
@@ -10,7 +12,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
 
             </Grid.RowDefinitions>
@@ -44,29 +45,30 @@
 
             </StackLayout>
 
-            <!--<Grid Grid.Row="1" RowSpacing="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <CollectionView
+                HeightRequest="200"
+                Grid.Row="1"
+                ItemsSource="{Binding Guesses}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="3"
+                        />
+                </CollectionView.ItemsLayout>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:ColorGuess">
+                        <Button 
+                            Text="{Binding Guess}"
+                            BackgroundColor="{Binding Color}"
+                            FontSize="16"
+                            IsEnabled="false "/>
 
-                <Label Text="#"
-                       TextColor="White"
-                       FontSize="30"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Start"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                <Label Text="FACADE"
-                       TextColor="White"
-                       FontSize="30"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-            </Grid>-->
-
-            <Grid Padding="12" Grid.Row="2" RowSpacing="12" ColumnSpacing="12">
+            <!--<Grid Padding="12" Grid.Row="1" RowSpacing="12" ColumnSpacing="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -122,7 +124,7 @@
                     FontSize="16"
                     IsEnabled="false "/>
 
-            </Grid>
+            </Grid>-->
 
             <Grid Padding="12" Grid.Row="3" RowSpacing="12" ColumnSpacing="12">
                 <Grid.RowDefinitions>
@@ -146,6 +148,9 @@
                     BackgroundColor="#666"
                     TextColor="White"
                     FontSize="48"
+
+                    Command="{Binding AddLetterCommand}"
+                    CommandParameter="A"
                 />
                 <Button Grid.Row="0"
                     Grid.Column="1"
@@ -156,6 +161,9 @@
                     TextColor="White"
 
                     FontSize="48"
+
+                    Command="{Binding AddLetterCommand}"
+                    CommandParameter="B"
                 />
                 <Button Grid.Row="0"
                     Grid.Column="2"
@@ -166,6 +174,9 @@
                     TextColor="White"
 
                     FontSize="48"
+
+                    Command="{Binding AddLetterCommand}"
+                    CommandParameter="C"
                 />
                 <Button Grid.Row="1"
                     Grid.Column="0"
@@ -176,6 +187,9 @@
                     TextColor="White"
 
                     FontSize="48"
+
+                    Command="{Binding AddLetterCommand}"
+                    CommandParameter="D"
                 />
                 <Button Grid.Row="1"
                     Grid.Column="1"
@@ -186,6 +200,9 @@
                     TextColor="White"
 
                     FontSize="48"
+
+                    Command="{Binding AddLetterCommand}"
+                    CommandParameter="E"
                 />
                 <Button Grid.Row="1"
                     Grid.Column="2"
@@ -196,6 +213,9 @@
                     TextColor="White"
 
                     FontSize="48"
+
+                    Command="{Binding AddLetterCommand}"
+                    CommandParameter="F"
                 />
                 <Button Grid.Row="0"
                     Grid.Column="3"
@@ -205,7 +225,7 @@
                     CornerRadius="30"
                     BackgroundColor="Green"
                     TextColor="White"
-                    Clicked="Button_Clicked"
+                    Command="{Binding GuessCommand}"
                     FontSize="32"
                 >
                     <Button.Shadow>
