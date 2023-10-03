@@ -73,7 +73,8 @@
                         HeightRequest="100"
                         BackgroundColor="Black"
                         TextColor="White"
-                        FontSize="22"/>
+                        FontSize="22"
+                        Clicked="Button_clicked_main"/>
                 <!--Clicked="Button_Clicked"-->
 
                 <Button Grid.Row="0"

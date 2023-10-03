@@ -28,4 +28,9 @@ public partial class GameOverPage : ContentPage
 
 	}
 
+	async void Button_clicked_main(System.Object sender, System.EventArgs e)
+	{
+		await Shell.Current.GoToAsync($"..");
+	}
+
 }

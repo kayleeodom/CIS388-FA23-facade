@@ -47,25 +47,27 @@ namespace facade
 				// go to GameOverPage (win)
 				//await Shell.Current.GoToAsync((nameof(GameOverPage)));
 				await Shell.Current.GoToAsync($"{nameof(GameOverPage)}?DidWin={true}");
+				Guesses.Clear();
 
             }
 
 			// else if this is the 6th guess (and it's wrong)
+			else if (Guesses.Count >= 5 && CurrentGuess != SecretColor)
+            {
+                // then go to game over (DidWin=false)
+                await Shell.Current.GoToAsync($"{nameof(GameOverPage)}?DidWin={false}");
+				Guesses.Clear();
+				CurrentGuess = "";
+
+            }
+
 			else
 			{
-
-				if(Guesses.Count >= 5 && CurrentGuess != SecretColor)
-				{
-                    // then go to game over (DidWin=false)
-                    await Shell.Current.GoToAsync($"{nameof(GameOverPage)}?DidWin={false}");
-                }
-
-				// Add this guess to the Guesses (not right)
-				Guesses.Add(new ColorGuess(CurrentGuess));
-				// make type in area blank again
-				CurrentGuess = "";
+                // Add this guess to the Guesses (not right)
+                Guesses.Add(new ColorGuess(CurrentGuess));
+                // make type in area blank again
+                CurrentGuess = "";
             }
-			
 
         }
 
@@ -79,6 +81,7 @@ namespace facade
             }
 
         }
+
 
 
     }
