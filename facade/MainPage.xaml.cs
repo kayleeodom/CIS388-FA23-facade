@@ -4,10 +4,10 @@ namespace facade;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	//int count = 0;
 
-	public bool DidWin { get; set; } = true;
-
+	// this is where the hard code of true or false used to be
+	public bool DidWin { get; set; }
 	public MainPage()
 	{
 		InitializeComponent();

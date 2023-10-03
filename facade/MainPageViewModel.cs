@@ -14,18 +14,17 @@ namespace facade
 		private string currentGuess;
 
 		public ObservableCollection<ColorGuess> Guesses { get; set; }
+        public bool DidWin { get; set; }
 
-		//public string SecretColor { get; set; }
-
-		public MainPageViewModel()
+        public MainPageViewModel()
 		{
 			secretColor = "FACADE";
 			currentGuess = "";
 
 			Guesses = new ObservableCollection<ColorGuess>();
 
-			Guesses.Add( new ColorGuess("#beaded")  );
-            Guesses.Add( new ColorGuess("#efaced") );
+			//Guesses.Add( new ColorGuess("#beaded")  );
+            //Guesses.Add( new ColorGuess("#efaced") );
 
         }
 
@@ -35,25 +34,53 @@ namespace facade
 		{
 			if( CurrentGuess.Length < 6)
 			{
-				CurrentGuess += letter;
+				CurrentGuess = CurrentGuess += letter;
 			}
 		}
 
         [RelayCommand]
-        void Guess()
-		{
+        async Task Guess()
+        {
 			// if correct, then go to game over (DidWin=true)
+			if (CurrentGuess == SecretColor)
+			{
+				// go to GameOverPage (win)
+				//await Shell.Current.GoToAsync((nameof(GameOverPage)));
+				await Shell.Current.GoToAsync($"{nameof(GameOverPage)}?DidWin={true}");
+
+            }
 
 			// else if this is the 6th guess (and it's wrong)
-			// then go to game over (DidWin=false)
+			else
+			{
+
+				if(Guesses.Count >= 5 && CurrentGuess != SecretColor)
+				{
+                    // then go to game over (DidWin=false)
+                    await Shell.Current.GoToAsync($"{nameof(GameOverPage)}?DidWin={false}");
+                }
+
+				// Add this guess to the Guesses (not right)
+				Guesses.Add(new ColorGuess(CurrentGuess));
+				// make type in area blank again
+				CurrentGuess = "";
+            }
+			
+
+        }
+
+        [RelayCommand]
+        void Delete()
+        {
+			// Remove letter from the end of the current guess
+            if (CurrentGuess.Length != 0)
+            {
+                CurrentGuess = CurrentGuess.Substring(0, CurrentGuess.Length - 1);
+            }
+
+        }
 
 
-			// Add this guess to the Guesses
-			Guesses.Add( new ColorGuess( CurrentGuess ) );
-
-		}
-
-
-	}
+    }
 }
 

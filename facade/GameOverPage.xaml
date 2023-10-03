@@ -2,17 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="facade.GameOverPage"
-             Title="GameOverPage">
-    <!--<VerticalStackLayout>
-        <Label 
-            x:Name="ResultLabel"
-            Text="You Won!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout-->
+             Title="GameOverPage"
+             xmlns:local="clr-namespace:facade"
+             x:DataType="local:MainPageViewModel">
+    
 
     <ScrollView>
-        <Grid Padding="0" RowSpacing="16" BackgroundColor="Black">
+        <Grid Padding="0" RowSpacing="16" BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
@@ -27,27 +23,30 @@
                          HorizontalOptions="Start"
                          VerticalOptions="Center"
                          HeightRequest="260"
-                         WidthRequest="380"/>
+                         WidthRequest="380"
+                         Stroke="black"
+                         StrokeThickness="10"/>
 
 
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="2">
                 <Label Text="#"
-                       TextColor="#facade"
+                       TextColor="Black"
                        FontSize="36"
                        VerticalOptions="Center"/>
 
                 <Label Text="FACADE"
                        TextColor="#facade"
-                       FontSize="38"
+                       FontSize="40"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
 
             </StackLayout>
 
             <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Padding="8">
-                <Label Text="{Binding Result}"
+                <Label Text="{Binding GuessCommand}"
                        x:Name="ResultLabel"
                        TextColor="Blue"
                        FontAttributes="Bold"
@@ -72,7 +71,7 @@
                         Text="Replay"
                         WidthRequest="100"
                         HeightRequest="100"
-                        BackgroundColor="#666"
+                        BackgroundColor="Black"
                         TextColor="White"
                         FontSize="22"/>
                 <!--Clicked="Button_Clicked"-->
@@ -82,7 +81,7 @@
                         Text="New"
                         WidthRequest="100"
                         HeightRequest="100"
-                        BackgroundColor="#666"
+                        BackgroundColor="Black"
                         TextColor="White"
                         FontSize="24"
                 />

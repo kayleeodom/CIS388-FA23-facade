@@ -8,52 +8,62 @@
              >
 
     <ScrollView>
-        <Grid Padding="0" RowSpacing="16" BackgroundColor="Black">
+        <Grid Padding="0" RowSpacing="16" BackgroundColor="Lavender">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto"/>
 
             </Grid.RowDefinitions>
 
 
-            <!--<RoundRectangle Grid.Row="0" Fill="#facade" CornerRadius="48" MaximumHeightRequest="150"/>-->
+            <!-- Holds the oval with the color in it-->
             <StackLayout HorizontalOptions="Fill" Padding="8" Grid.Row="0" Orientation="Horizontal"  >
 
-                <Ellipse Fill="#FACADE"
-                         HorizontalOptions="Center"
+                <Ellipse HorizontalOptions="Center"
                          VerticalOptions="Center"
                          HeightRequest="260"
                          WidthRequest="380"
+                         Fill="#FACADE"
+                         Stroke="black"
+                         StrokeThickness="10"
+                         
                 />
-
+                         <!--Fill="{Binding SecretColor}"-->
 
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="6">
                 <Label Text="#"
-                       TextColor="White"
+                       TextColor="Black"
                        FontSize="36"
                        VerticalOptions="Center"
                        />
+                
+                <!--stays there the whole time-->
 
-                <Label Text="FACADE"
-                       TextColor="White"
+                <Label Text="{Binding CurrentGuess}"
+                       TextColor="Black"
                        FontSize="38"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"/>
+                
+                
+                <!--Want this to hold the a place where your answer will be shown -->
 
             </StackLayout>
-
+            
+                <!--HeightRequest="200"-->
+            <!-- Holds past guesses (what you typed) -->
             <CollectionView
-                HeightRequest="200"
-                Grid.Row="1"
+                Grid.Row="2"
                 ItemsSource="{Binding Guesses}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
                         Orientation="Vertical"
-                        Span="3"
-                        />
+                        Span="2"
+                    />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
@@ -61,12 +71,24 @@
                         <Button 
                             Text="{Binding Guess}"
                             BackgroundColor="{Binding Color}"
+                            TextColor="Black"
+                            BorderColor="Black"
+                            BorderWidth="2"
                             FontSize="16"
+                            Margin="5"
                             IsEnabled="false "/>
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <!--<CollectionView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                    />
+                </CollectionView.ItemsLayout>
+            </CollectionView>-->
+
 
             <!--<Grid Padding="12" Grid.Row="1" RowSpacing="12" ColumnSpacing="12">
                 <Grid.RowDefinitions>
@@ -126,6 +148,7 @@
 
             </Grid>-->
 
+            <!-- Letters to choose from / guess or delete -->
             <Grid Padding="12" Grid.Row="3" RowSpacing="12" ColumnSpacing="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -140,24 +163,26 @@
 
                 </Grid.ColumnDefinitions>
 
+                <!-- Letter A -->
                 <Button Grid.Row="0"
                     Grid.Column="0"
                     Text="A"
                     WidthRequest="80"
                     HeightRequest="80"
-                    BackgroundColor="#666"
+                    BackgroundColor="Black"
                     TextColor="White"
                     FontSize="48"
 
                     Command="{Binding AddLetterCommand}"
                     CommandParameter="A"
                 />
+                <!-- Letter B -->
                 <Button Grid.Row="0"
                     Grid.Column="1"
                     Text="B"
                     WidthRequest="80"
                     HeightRequest="80"
-                    BackgroundColor="#666"
+                    BackgroundColor="Black"
                     TextColor="White"
 
                     FontSize="48"
@@ -165,12 +190,13 @@
                     Command="{Binding AddLetterCommand}"
                     CommandParameter="B"
                 />
+                <!-- Letter C -->
                 <Button Grid.Row="0"
                     Grid.Column="2"
                     Text="C"
                    WidthRequest="80"
                     HeightRequest="80"
-                    BackgroundColor="#666"
+                    BackgroundColor="Black"
                     TextColor="White"
 
                     FontSize="48"
@@ -178,12 +204,13 @@
                     Command="{Binding AddLetterCommand}"
                     CommandParameter="C"
                 />
+                <!-- Letter D -->
                 <Button Grid.Row="1"
                     Grid.Column="0"
                     Text="D"
                     WidthRequest="80"
                     HeightRequest="80"
-                    BackgroundColor="#666"
+                    BackgroundColor="Black"
                     TextColor="White"
 
                     FontSize="48"
@@ -191,12 +218,13 @@
                     Command="{Binding AddLetterCommand}"
                     CommandParameter="D"
                 />
+                <!-- Letter E -->
                 <Button Grid.Row="1"
                     Grid.Column="1"
                     Text="E"
                     WidthRequest="80"
                     HeightRequest="80"
-                    BackgroundColor="#666"
+                    BackgroundColor="Black"
                     TextColor="White"
 
                     FontSize="48"
@@ -204,12 +232,13 @@
                     Command="{Binding AddLetterCommand}"
                     CommandParameter="E"
                 />
+                <!-- Letter F -->
                 <Button Grid.Row="1"
                     Grid.Column="2"
                     Text="F"
                     WidthRequest="80"
                     HeightRequest="80"
-                    BackgroundColor="#666"
+                    BackgroundColor="Black"
                     TextColor="White"
 
                     FontSize="48"
@@ -217,6 +246,7 @@
                     Command="{Binding AddLetterCommand}"
                     CommandParameter="F"
                 />
+                <!-- Submit Guess -->
                 <Button Grid.Row="0"
                     Grid.Column="3"
                     Text="↑"
@@ -236,7 +266,7 @@
                                 Opacity="0.5"/>
                     </Button.Shadow>
                 </Button>
-
+                <!-- Undo Letter -->
                 <Button Grid.Row="1"
                     Grid.Column="3"
                     Text="⌫"
@@ -246,6 +276,8 @@
                     TextColor="#333"
                     BorderWidth="0"
                     FontSize="36"
+                        
+                    Command="{Binding DeleteCommand}"
                 />
 
 

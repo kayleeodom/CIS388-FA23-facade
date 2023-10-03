@@ -10,19 +10,22 @@ public partial class GameOverPage : ContentPage
 		set
 		{
 			didWin = value;
-			if(didWin)
+			if(DidWin == true)
 			{
-				ResultLabel.Text = "You Won!";
+				ResultLabel.Text = "YOU WON! :)";
 			}
 			else
 			{
-				ResultLabel.Text = "You Lost!";
+				ResultLabel.Text = "you lost :(";
 			}
 		}
 	}
 
-	public GameOverPage()
+
+    public GameOverPage()
 	{
 		InitializeComponent();
+
 	}
+
 }
